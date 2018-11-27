@@ -2,31 +2,17 @@
 // and returns the time in a human - readable format(HH: MM: SS)
 
 function humanReadable(seconds) {
-    let h, m, s, str = "";
-    if (seconds == 0)
-        return "00:00:00"
-    else{
-        h = Math.floor(seconds / 3600)
-        seconds = seconds - h * 3600
-        m = Math.floor(seconds / 60);
-        seconds = seconds - m * 60
-        s = seconds
+    var hours = parseInt(seconds / 3600);
+    var minutes = parseInt(seconds / 60) % 60;
+    var seconds = seconds % 60;
+
+    var normalise = function (val) {
+        return val < 10 ? "0" + val : val;
     }
-    
-    if (h>=0 && h <10)
-        str+="0" + h + ":"
-    else
-        str+=h+":"
-    if (m >= 0 && m < 10)
-        str += "0" + m + ":"
-    else
-        str += m + ":"
-    if (s >= 0 && s < 10)
-        str += "0" + s 
-    else
-        str += s 
-    return str
-        
+
+    return normalise(hours) + ":" + normalise(minutes) + ":" + normalise(seconds);
 }
 
 console.log(humanReadable(359999))
+console.log(humanReadable(60))
+console.log(humanReadable(0))
