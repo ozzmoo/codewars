@@ -1,2 +1,2 @@
 # codewars
-<li> Репа с задачками Codewars </li>
+<li>Codewars katas</li>
